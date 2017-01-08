@@ -2,18 +2,22 @@
 # Makefile for drag_race_cli_tree.c
 #
 CC=gcc
-CFLAGS=-lncurses
-SRC_FILES=drag_race_cli_tree.c
+CFLAGS+=-std=c99
+CPPFLAGS+=-D_POSIX_C_SOURCE=199309L
+LDLIBS=-lncurses
+SRC_FILES=$(wildcard *.c)
 BIN_FILE=drag_race_cli_tree
 
-drag_race_cli_tree:
-	$(CC) $(SRC_FILES) $(CFLAGS) -o $(BIN_FILE)
+.PHONY: all
+all: $(BIN_FILE)
 
-debug:
-	$(CC) -D _DEBUG_ $(SRC_FILES) $(CFLAGS) -o $(BIN_FILE)
+$(BIN_FILE): $(SRC_FILES)
 
-all: drag_race_cli_tree
+.PHONY: debug
+debug: CPPFLAGS+=-D_DEBUG_
+debug: $(BIN_FILE)
 
+.PHONY: clean
 clean:
-	rm $(BIN_FILE)
+	$(RM) $(BIN_FILE)
 
