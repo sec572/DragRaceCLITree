@@ -1,0 +1,22 @@
+Console Drag Race Tree
+
+This program was written for fun to print a simple ascii drag racing light tree
+on the console.
+
+It reprints itself every 10 seconds. You can terminate the program by hitting
+CTRL+C.
+
+This program requires the ncurses library.
+
+On Ubuntu, you could install it using APT.
+
+sudo apt-get install libncurses5-dev
+
+Compiling:
+
+make
+
+Running:
+
+./drag_race_cli_tree
+
